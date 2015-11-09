@@ -1,8 +1,10 @@
 ---
-- name: Install base packages needed for debian systems
-	apt: pkg={{ item }} state=latest
-	with_items:
-		- sudo
-		- rsync
-		- screen
-		- unzip
+
+- name: "Install base packages needed for debian systems"
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - sudo
+    - rsync
+    - screen
+    - unzip
+    - iptables
