@@ -1,5 +1,5 @@
 # {{ ansible_managed }}
 
 {% for service in services.netflix %}
-address=/{{ service }}/{{ hostvars['proxy'][ansible_default_ipv4].address }}
+address=/{{ service }}/{{ hostvars['proxy']['ansible_default_ipv4'].address }}
 {% endfor %}
