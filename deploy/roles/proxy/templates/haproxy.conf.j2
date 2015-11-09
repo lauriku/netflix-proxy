@@ -26,7 +26,7 @@ defaults
   retries 3
 
 listen stats
-  bind {{ hostvars[host][ansible_default_ipv4].address }}:27199
+  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:27199
   mode http
   stats enable
   stats realm Protected\ Area
@@ -34,7 +34,7 @@ listen stats
   stats auth haproxy: {{ stats_password }}
 
 frontend f_catchall_http
-  bind {{ hostvars[host][ansible_default_ipv4].address }}:80
+  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:80
   mode http
   option httplog
   capture request header Host len 50
@@ -51,10 +51,10 @@ backend b_catchall_http
 {% for service in services.netflix %}
   use-server {{ service }} if {{'{'}} hdr_dom(host) -i {{ service }} {{'{'}}
   server {{ service }} {{ service }}:80 check inter 60s fastinter 10s downinter 10s fall 1800
-{% endfor ‰}
+{% endfor %}
 
 frontend f_catchall_https
-  bind {{ hostvars[host][ansible_default_ipv4].address }}:443
+  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:443
   mode tcp
   option tcplog
   tcp-request inspect-delay 5s
@@ -63,15 +63,15 @@ frontend f_catchall_https
 
 {% for service in services.netflix %}
   use_backend b_catchall_https if {{'{'}} hdr_dom(host) -i {{ service }} {{'}'}}
-{% endfor ‰}
+{% endfor %}
 
 backend b_catchall_https
   mode tcp
   option tcplog
 {% for service in services.netflix %}
-  use-server {{ service }}  if {{'}'}} req_ssl_sni -i {{ service }}  {{'}'}}
+  use-server {{ service }}  if {{'{'}} req_ssl_sni -i {{ service }}  {{'}'}}
   server {{ service }}  {{ service }}:443 check inter 60s fastinter 10s downinter 10s fall 1800
-{% endfor ‰}
+{% endfor %}
 
 backend b_deadend_http
   mode http
