@@ -1,0 +1,50 @@
+---
+  stats_password: "{{ lookup('password', 'credentials/haproxy chars=ascii_letters') }}"
+  services: 
+    netflix: 
+      - signup.netflix.com
+      - www.netflix.com
+      - appboot.netflix.com
+      - cbp-us.nccp.netflix.com
+      - api-global.netflix.com
+      - movies.netflix.com
+      - movies1.netflix.com
+      - secure.netflix.com
+      - moviecontrol.netflix.com
+      - api.netflix.com
+      - api-us.netflix.com
+      - uiboot.netflix.com
+      - cbp.nccp.netflix.com
+      - ios.nccp.netflix.com
+      - xbox.nccp.netflix.com
+      - nccp-nrdp-31.cloud.netflix.net
+      - nintendo.nccp.netflix.com
+      - playstation.nccp.netflix.com
+      - nrdp.nccp.netflix.com
+      - android.nccp.netflix.com
+      - bivl.netflix.com
+      - htmltvui-api.netflix.com
+      - netflix.com
+    hbo:
+      - hbo.com
+      - www.hbo.com
+      - store.hbo.com
+      - hbogo.com
+      - www.hbogo.com
+      - devicecast.hbogo.com
+      - catalog.lv3.hbogo.com
+      - profile.hbogo.com
+      - pro.hbogo.com
+      - hls.hbo.lv3.hbogo.com
+      - i.hbo.lv3.hbogo.com
+      - pdl.misc.lv3.hbogo.com
+      - smooth.misc.lv3.hbogo.com
+      - smooth.pro17.lv3.hbogo.com
+      - reporting.hbogo.com
+      - register.hbogo.com
+    hulu:
+      - s.hulu.com
+      - play.hulu.com
+      - hulu.com
+      - www.hulu.com
+      - secure.hulu.com

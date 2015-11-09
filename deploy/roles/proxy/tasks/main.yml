@@ -1,0 +1,9 @@
+---
+
+- name: "Install packages needed for proxy server"
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - haproxy
+
+- name: "Create haproxy config file from template"
+  template: src=haproxy.conf.j2 dest=/etc/haproxy.conf owner=root group=wheel mode=0644
