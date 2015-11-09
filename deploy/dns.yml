@@ -1,6 +1,8 @@
 ---
 
-- hosts: all
-    roles:
-    - common
-    - dns
+- hosts: dns
+  become: true
+  become_user: root
+  roles:
+  - common
+  - dns
