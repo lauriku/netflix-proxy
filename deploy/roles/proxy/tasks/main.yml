@@ -6,4 +6,4 @@
     - haproxy
 
 - name: "Create haproxy config file from template"
-  template: src=haproxy.conf.j2 dest=/etc/haproxy.conf owner=root group=wheel mode=0644
+  template: src=haproxy.conf.j2 dest=/etc/haproxy.conf owner=root group=root mode=0644
