@@ -26,7 +26,7 @@ defaults
   retries 3
 
 listen stats
-  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:27199
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:27199
   mode http
   stats enable
   stats realm Protected\ Area
@@ -34,7 +34,7 @@ listen stats
   stats auth haproxy: {{ stats_password }}
 
 frontend f_catchall_http
-  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:80
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:80
   mode http
   option httplog
   capture request header Host len 50
@@ -54,7 +54,7 @@ backend b_catchall_http
 {% endfor %}
 
 frontend f_catchall_https
-  bind {{ hostvars['proxy']['ansible_default_ipv4'].address }}:443
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:443
   mode tcp
   option tcplog
   tcp-request inspect-delay 5s
