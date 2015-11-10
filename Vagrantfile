@@ -8,10 +8,6 @@ Vagrant.configure(2) do |config|
     proxy.vm.box_url = "https://halkyon.net/vagrant/debian-jessie-minimal-amd64.box"
     proxy.vm.hostname = "proxy-host"
     proxy.vm.provision :shell, path: "install_python.sh"
-
-    proxy.vm.provision "ansible" do |ansible|
-      ansible.playbook = "deploy/proxy.yml"
-    end
   end
 
   config.vm.define "dns" do |dns|
@@ -19,9 +15,10 @@ Vagrant.configure(2) do |config|
     dns.vm.box_url = "https://halkyon.net/vagrant/debian-jessie-minimal-amd64.box"
     dns.vm.hostname = "dns-host"
     dns.vm.provision :shell, path: "install_python.sh"
-    
-    dns.vm.provision "ansible" do |ansible|
-      ansible.playbook = "deploy/dns.yml"
-    end
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "deploy/site.yml"
+    ansible.limit = "all"
   end
 end
