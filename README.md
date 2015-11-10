@@ -5,5 +5,8 @@ This is a set of Ansible playbooks to set up the needed servers for routing conn
 ## Requirements:
 * Vagrant installed
 * Ansible installed
+
 ## Setup
-'''vagrant up --provision'''
+```
+vagrant up --provision
+```
