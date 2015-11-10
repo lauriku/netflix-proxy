@@ -1,8 +1,0 @@
----
-
-- hosts: proxy
-  become: true
-  become_user: root
-  roles: 
-  - common
-  - proxy
