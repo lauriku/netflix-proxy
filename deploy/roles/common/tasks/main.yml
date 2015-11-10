@@ -8,3 +8,15 @@
     - screen
     - unzip
     - iptables
+
+- name: "Put iptables startup script in place"
+  copy: src=iptables dest=/etc/network/if-pre-up.d/iptables owner=root group=root mode=0755
+
+- name: "Create iptables.rules from template"
+  template: src=iptables.j2 dest=/etc/iptables.rules owner=root group=root mode=0600
+
+- name: "Apply initial iptables rules"
+  command: /sbin/iptables-restore < /etc/iptables.rules
+
+- name: "Create iptables.up.rules from applied rules"
+  command: /sbin.iptables-save > /etc/iptables.up.rules
