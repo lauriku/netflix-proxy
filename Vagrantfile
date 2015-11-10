@@ -15,10 +15,9 @@ Vagrant.configure(2) do |config|
     dns.vm.box_url = "https://halkyon.net/vagrant/debian-jessie-minimal-amd64.box"
     dns.vm.hostname = "dns-host"
     dns.vm.provision :shell, path: "install_python.sh"
-  end
-
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "deploy/site.yml"
-    ansible.limit = "all"
+    dns.vm.provision "ansible" do |ansible|
+      ansible.limit = "all"
+      ansible.playbook = "deploy/site.yml"
+    end
   end
 end
