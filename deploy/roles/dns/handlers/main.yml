@@ -1,0 +1,5 @@
+---
+
+- name: restart dnsmasq
+  command: service dnsmasq restart
+  
