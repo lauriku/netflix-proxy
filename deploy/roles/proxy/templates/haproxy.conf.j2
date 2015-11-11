@@ -31,7 +31,7 @@ listen stats
   stats enable
   stats realm Protected\ Area
   stats uri /
-  stats auth haproxy: {{ stats_password }}
+  stats auth haproxy:{{ stats_password }}
 
 frontend f_catchall_http
   bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:{{ http_port }}
