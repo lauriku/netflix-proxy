@@ -4,6 +4,5 @@
 address=/{{ service }}/{{ hostvars['proxy']['ansible_default_ipv4'].address }}
 {% endfor %}
 
-# External DNS servers to pass the non-matching DNS queries to. Using Google DNS here
-server=8.8.8.8
-server=8.8.4.4
+server={{ primary_dns }}
+server={{ secondary_dns }}

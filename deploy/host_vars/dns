@@ -1,2 +1,6 @@
 ---
   dns_port: "53"
+
+  # Google DNS as default 
+  primary_dns: "8.8.8.8"
+  secondary_dns: "8.8.4.4"
