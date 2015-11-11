@@ -49,7 +49,7 @@ backend b_catchall_http
   option httplog
   option accept-invalid-http-response
 {% for service in services.netflix %}
-  use-server {{ service }} if {{'{'}} hdr_dom(host) -i {{ service }} {{'{'}}
+  use-server {{ service }} if {{'{'}} hdr_dom(host) -i {{ service }} {{'}'}}
   server {{ service }} {{ service }}:{{ http_port }} check inter 60s fastinter 10s downinter 10s fall 1800
 {% endfor %}
 
