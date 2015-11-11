@@ -70,7 +70,7 @@ backend b_catchall_https
   option tcplog
 {% for service in services.netflix %}
   use-server {{ service }}  if {{'{'}} req_ssl_sni -i {{ service }}  {{'}'}}
-  server {{ service }}  {{ service }}:{{ https_port }} check inter 60s fastinter 10s downinter 10s fall 1800
+  server {{ service }} {{ service }}:{{ https_port }} check inter 60s fastinter 10s downinter 10s fall 1800
 {% endfor %}
 
 backend b_deadend_http
