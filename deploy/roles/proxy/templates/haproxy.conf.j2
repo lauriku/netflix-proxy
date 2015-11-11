@@ -26,7 +26,7 @@ defaults
   retries 3
 
 listen stats
-  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:27199
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:{{ haproxy_stats_port }}
   mode http
   stats enable
   stats realm Protected\ Area
@@ -34,7 +34,7 @@ listen stats
   stats auth haproxy: {{ stats_password }}
 
 frontend f_catchall_http
-  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:80
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:{{ http_port }}
   mode http
   option httplog
   capture request header Host len 50
@@ -50,11 +50,11 @@ backend b_catchall_http
   option accept-invalid-http-response
 {% for service in services.netflix %}
   use-server {{ service }} if {{'{'}} hdr_dom(host) -i {{ service }} {{'{'}}
-  server {{ service }} {{ service }}:80 check inter 60s fastinter 10s downinter 10s fall 1800
+  server {{ service }} {{ service }}:{{ http_port }} check inter 60s fastinter 10s downinter 10s fall 1800
 {% endfor %}
 
 frontend f_catchall_https
-  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:443
+  bind {{ hostvars[inventory_hostname]['ansible_default_ipv4'].address }}:{{ https_port }}
   mode tcp
   option tcplog
   tcp-request inspect-delay 5s
@@ -70,7 +70,7 @@ backend b_catchall_https
   option tcplog
 {% for service in services.netflix %}
   use-server {{ service }}  if {{'{'}} req_ssl_sni -i {{ service }}  {{'}'}}
-  server {{ service }}  {{ service }}:443 check inter 60s fastinter 10s downinter 10s fall 1800
+  server {{ service }}  {{ service }}:{{ https_port }} check inter 60s fastinter 10s downinter 10s fall 1800
 {% endfor %}
 
 backend b_deadend_http
