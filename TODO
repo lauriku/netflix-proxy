@@ -1,2 +1,3 @@
-* Create Ansible template for haproxy config instead of using php generator
-* 
+* Add logrotate
+* Allow connections only from install hosts external ip to proxy
+* Allow dns queries only from local network/install host if dns is facing the internet
