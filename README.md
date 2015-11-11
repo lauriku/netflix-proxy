@@ -6,6 +6,10 @@ There are a lot of available setups which basically do the same thing, but I wan
 # Requirements:
 * [Vagrant](http://www.vagrantup.com/downloads) installed (for testing)
 * [Ansible](http://docs.ansible.com/ansible/intro_installation.html) installed
+* A linux server for the proxy (assuming Debian/Ubuntu for these playbooks), a low-end VPS is fine.
+** This server would ideally be located in a region which content you would like to gain access to, for example the US
+* A linux server for the DNS, for example a Raspberry Pi at your home, with Raspbian installed.
+* Root access to both of these boxes
 
 # Test Environment Setup
 ```
@@ -13,6 +17,9 @@ vagrant up
 ```
 
 This should give you two virtual boxes, one 'dns' and one 'proxy'. Try either 
-```vagrant ssh proxy``` or ```vagrant ssh dns``` to see what's installed in either box.
+```vagrant ssh proxy``` or ```vagrant ssh dns``` to see what's installed and configured in either box.
 
 When doing changes to ansible configs, a new provision can be made with ```vagrant provision```
+
+# Installation
+Edit the file
