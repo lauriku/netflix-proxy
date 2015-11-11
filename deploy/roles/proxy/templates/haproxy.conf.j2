@@ -62,7 +62,7 @@ frontend f_catchall_https
   default_backend b_deadend_https
 
 {% for service in services.netflix %}
-  use_backend b_catchall_https if {{'{'}} hdr_dom(host) -i {{ service }} {{'}'}}
+  use_backend b_catchall_https if {{'{'}} req_ssl_sni -i {{ service }} {{'}'}}
 {% endfor %}
 
 backend b_catchall_https
