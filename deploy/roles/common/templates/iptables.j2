@@ -1,6 +1,6 @@
-# {{ ansible_managed }}
-
 *filter
+
+# {{ ansible_managed }}
 
 # Allows all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
 -A INPUT -i lo -j ACCEPT
@@ -13,20 +13,20 @@
 # You could modify this to only allow certain traffic
 -A OUTPUT -j ACCEPT
 
-{% if inventory_hostname is 'proxy' %}
+{% if inventory_hostname == 'proxy' %}
 # Allow haproxy ports
--A INPUT -p tcp --dport {{ http_port }} -j ACCEPT
--A INPUT -p tcp --dport {{ https_port }} -j ACCEPT
+-A INPUT -p tcp --dport {{ http_port|default("80") }} -j ACCEPT
+-A INPUT -p tcp --dport {{ https_port|default("443") }} -j ACCEPT
 -A INPUT -p tcp --dport {{ haproxy_stats_port }} -j ACCEPT
 {% endif %}
 
-{% if inventory_hostname is 'dns' %}
+{% if inventory_hostname == 'dns' %}
 # Allow DNS ports
--A INPUT -p tcp --dport {{ dns_port }} -j ACCEPT
+-A INPUT -p udp --dport {{ dns_port }} -j ACCEPT
 {% endif %}
 
 # Allows SSH connections 
--A INPUT -p tcp -m state --state NEW --dport {{ ssh_port }}-j ACCEPT
+-A INPUT -p tcp -m state --state NEW --dport {{ ssh_port|default("22") }} -j ACCEPT
 
 # Allow ping
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
