@@ -9,6 +9,7 @@ There are a lot of available setups which basically do the same thing, but I wan
 * A linux server for the proxy (assuming Debian/Ubuntu for these playbooks), a low-end VPS is fine. This server would ideally be located in a region which content you would like to gain access to, for example the US
 * A linux server for the DNS, for example a Raspberry Pi at your home, with Raspbian installed.
 * Root access to both of these boxes
+* Python installed on bot of the boxes
 
 # Test Environment Setup
 ```
@@ -22,3 +23,9 @@ When doing changes to ansible configs, a new provision can be made with ```vagra
 
 # Installation
 Edit the file in deploy/inventory/production to enter the access details for your hosts. Ensure you have either root access or a user with sudo-permissions on the box.
+
+## Low-end VPS Providers
+* [linode](https://www.linode.com/) $5/month
+* [DigitalOcean](https://www.digitalocean.com/) $10/month
+* [ChicagoVPS](http://chicagovps.net/) $1/month
+* [Deepnet Solutions](https://www.deepnetsolutions.com/kvm-vps.html) $2.50/month
