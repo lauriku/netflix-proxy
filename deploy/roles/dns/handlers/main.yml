@@ -1,4 +1,4 @@
 ---
 
 - name: restart dnsmasq
-  command: service dnsmasq restart
+  command: /etc/init.d/dnsmasq restart
