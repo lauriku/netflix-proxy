@@ -1,7 +1,7 @@
 ---
 
 - name: "Install base packages needed for debian systems"
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - sudo
     - rsync

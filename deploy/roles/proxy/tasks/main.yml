@@ -1,7 +1,7 @@
 ---
 
 - name: "Install packages needed for proxy server"
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ item }} state=latest update_cache=yes
   with_items:
     - haproxy
 
