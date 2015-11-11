@@ -24,6 +24,10 @@ When doing changes to ansible configs, a new provision can be made with ```vagra
 # Installation
 Edit the file in deploy/inventory/production to enter the access details for your hosts. Ensure you have either root access or a user with sudo-permissions on the box.
 
+1. Edit the file ```deploy/inventory/production``` with access details of your servers, ip, ssh user and ssh port. Note that this user should be either a user with sudo privileges or simply root (not recommended)
+2. Run ```ansible-playbook -i deploy/inventory/production deploy/site.yml``` to deploy
+3. Configure your clients to use the DNS server as their primary DNS, either manually or through DHCP.
+
 ## Low-end VPS Providers
 * [linode](https://www.linode.com/) $5/month
 * [DigitalOcean](https://www.digitalocean.com/) $10/month
