@@ -1,2 +1,0 @@
-dns ansible_ssh_host=
-proxy ansible_ssh_host=

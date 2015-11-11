@@ -1,0 +1,2 @@
+proxy ansible_ssh_host=255.255.255.255 ansible_ssh_user=root ansible_ssh_port=22
+dns ansible_ssh_host=255.255.255.255 ansible_ssh_user=root ansible_ssh_port=22
