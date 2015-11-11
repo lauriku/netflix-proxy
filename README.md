@@ -29,3 +29,4 @@ Edit the file in deploy/inventory/production to enter the access details for you
 * [DigitalOcean](https://www.digitalocean.com/) $10/month
 * [ChicagoVPS](http://chicagovps.net/) $1/month
 * [Deepnet Solutions](https://www.deepnetsolutions.com/kvm-vps.html) $2.50/month
+* [HudsonValleyHost](http://hudsonvalleyhost.com/vps.php) $15/year
