@@ -1,0 +1,5 @@
+---
+  http_port: "80"
+  https_port: "443"
+  haproxy_stats_port: "27199"
+  stats_password: "{{ lookup('password', 'credentials/haproxy chars=ascii_letters') }}"

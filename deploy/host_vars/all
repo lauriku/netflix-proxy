@@ -1,5 +1,5 @@
 ---
-  stats_password: "{{ lookup('password', 'credentials/haproxy chars=ascii_letters') }}"
+  ssh_port: "22"
   services: 
     netflix: 
       - signup.netflix.com
